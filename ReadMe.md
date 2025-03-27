@@ -125,6 +125,11 @@ In the following sections, we'll explore practical concepts such as:
 
 ---
 
+## Additional Resources for Further Study
+- [Steganography Explained](https://www.youtube.com/watch?v=TWEXCYQKyDc)
+- [What is Steganography and How it Works](https://www.geeksforgeeks.org/what-is-steganography-and-how-it-works/)
+
+
 ## Pixel Definition and Representation
 ---
 
@@ -215,6 +220,10 @@ In the following sections, we will explore how to practically apply these concep
 - Visualization techniques to understand pixel and bit distribution clearly.
 
 ---
+## Additional Resources for Further Study
+- [Pixels and Resolution Explained](https://www.youtube.com/watch?v=15aqFQQVBWU)
+- [Image Representation](https://www.tutorialspoint.com/dip/image_representation.htm)
+
 
 ## How to Hide a Message within an Image
 
@@ -309,7 +318,11 @@ After embedding the secret message, the image is known as a **stego image**. Ide
 Subsequent sections will detail how histogram visualization can help differentiate between original and stego images, highlighting subtle changes introduced by steganography.
 
 ---
+## Additional Resources for Further Study
+- [LSB Steganography Technique](https://www.youtube.com/watch?v=_oSPNH95gB8)
+- [Least Significant Bit Steganography (LSB)](https://www.geeksforgeeks.org/least-significant-bit-steganography/)
 
+---
 ## 4. Histogram Representation of Original and Stego Images
 
 ### Introduction to Histogram Representation
@@ -363,6 +376,11 @@ Histograms play a vital role in steganalysis—the practice of detecting hidden 
 - Serving as evidence in digital forensic investigations, helping identify altered or tampered images.
 
 Thus, histogram analysis is fundamental in verifying image authenticity and uncovering concealed data.
+
+---
+## Additional Resources for Further Study
+- [Image Histograms Explained](https://www.youtube.com/watch?v=5kbwF-xAbwI)
+- [Understanding Image Histograms](https://photographylife.com/understanding-histograms-in-photography)
 
 ---
 
@@ -461,7 +479,13 @@ These advanced features can detect even subtle steganographic techniques that si
 ---
 
 By understanding both simple and advanced methods of feature extraction, students and practitioners can choose the appropriate approach depending on their objectives and the complexity of the analysis required.
+---
+## Additional Resources for Further Study
 
+- [Feature Extraction Explained Simply](https://www.youtube.com/watch?v=_q0QDj_C_XU)
+- [Feature Extraction in Image Processing](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-feature-extraction-python/)
+
+---
 
 # 6. Advanced Feature Extraction Methods
 
@@ -586,7 +610,13 @@ In practical applications, these 41 features are used to train models such as **
 - Machine learning models utilize these extracted features to accurately detect hidden messages embedded in digital images.
 
 
-
+---
+## Additional Resources for Further Study
+- [Wavelet Transform in Image Processing](https://www.youtube.com/watch?v=jnxqHcObNK4)
+- [Wavelet Transform Tutorial](https://towardsdatascience.com/an-introduction-to-wavelets-5a2bf9021c5f)
+- [Correlation Analysis](https://www.youtube.com/watch?v=nf11wTObfZ8)
+- [Advanced Image Feature Extraction](https://www.youtube.com/watch?v=3Z4W0hX47HE)
+- [Advanced Statistical Feature Extraction in Steganography](https://link.springer.com/article/10.1007/s00500-019-04011-5)
 
 
 
