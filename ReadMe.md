@@ -277,6 +277,9 @@ Notice that the pixel value changes minimally from 172 to 173, making the altera
 ### Embedding the Message into Pixels
 To hide our secret binary message (`010100110110010101100011011100100110010101110100`) into an image, we use the following process:
 
+<img width="577" alt="image" src="https://github.com/user-attachments/assets/45749209-3bfa-4dc6-b099-3b6af100ee0f" />
+
+
 1. Flatten the pixel array of the image into a one-dimensional array for easy indexing.
 2. Replace the least significant bit (LSB) of each pixel with a bit from our message.
 
@@ -292,6 +295,11 @@ To hide our secret binary message (`01010011011001010110001101110010011001010111
 | 6       | `11011000`     | 0          | `11011000`     |
 | 7       | `11101100`     | 1          | `11101101`     |
 | 8       | `10110001`     | 1          | `10110001`     |
+
+**Another Example embedding the first 8 bits (`01010011` which represents 'S'):**
+
+<img width="453" alt="image" src="https://github.com/user-attachments/assets/28c58444-5617-4020-ba3d-dc9b617d227f" />
+
 
 This process continues until all bits of the message are embedded into the pixel data.
 
@@ -357,6 +365,9 @@ By embedding secret data into an image, especially through Least Significant Bit
 ### Visual Differences Highlighted by Histograms
 
 When comparing histograms of an original and a stego image side-by-side, slight deviations in the pixel distribution can be observed, highlighting the embedded message.
+
+<img width="898" alt="image" src="https://github.com/user-attachments/assets/047d6825-8278-43b0-aab4-af8f7dd4e1aa" />
+
 
 **Example:**
 
