@@ -54,7 +54,7 @@ The goal of this lab is to:
   - **Stego images** (contain hidden message).
 - Extract both simple and advanced features from grayscale images (e.g., pixel statistics, edge features, correlation).
 - Use AI techniques such as **Random Forest** and **PCA** to build an effective detection pipeline.
-- Evaluate the trained model using metrics such as **accuracy** and **F1-score**.
+- Evaluate the trained model on held-out data using metrics such as **accuracy**, **precision / recall** and a **confusion matrix**.
 - Test the model with custom grayscale images to determine whether a hidden message exists.
 
 By the end of this lab, you will have developed an **AI-powered steganography detection system** capable of assisting forensic analysts in uncovering hidden communications in images.
@@ -154,10 +154,10 @@ We train a **Random Forest Classifier**, a powerful ensemble learning method tha
 - The classifier is trained to distinguish between cover and stego images using their extracted and reduced feature vectors.
 
 #### 3. Model Training Loop
-- The dataset is split: **70% for training**, **30% for testing**
-- The training loop:
+- The dataset is split: **70% for training**, **30% for testing** (before scaling and PCA, so the test set stays unseen)
+- The training step:
   - Fits the model on training features and labels
-  - Evaluates the model on training data to compute:
+  - Evaluates the model on both the training data and the held-out test data to compute:
     - **Accuracy**
     - **Classification Report** (Precision, Recall, F1-Score)
 
@@ -200,69 +200,52 @@ prediction = clf.predict(features)
 ---
 ## 🛠️ Usage Instructions
 
-### ⚙️ Setup
+### Notebooks
 
-#### 1. Install Dependencies
-Use the following command to install all required Python packages:
+| Notebook | Purpose |
+|---|---|
+| `how_steg_works.ipynb` | Hands-on theory: pixels, bits, hide a message with LSB, recover it, compare cover and stego |
+| `AI_steg_predict.ipynb` | Supervised learning: train a Random Forest to detect stego images, then test images |
 
-```bash
-pip install torch torchvision matplotlib opencv-python pycocotools py7zr requests PyWavelets
-```
+Run `how_steg_works.ipynb` first, then `AI_steg_predict.ipynb`.
 
-#### 2. Download and Extract the Dataset
+### Running the labs (no installation on your own computer)
 
-```bash
-# No compressed dataset used in this lab
-# Instead, all data is sourced from:
-# https://github.com/Sourish1997/steganalysis/tree/master/Datasets
-```
+1. Open the notebook in your hosted Jupyter environment (or click the *Open in Colab* badge at the top of the notebook).
+2. Run all cells from top to bottom (Jupyter: *Kernel, Restart & Run All*; Colab: *Runtime, Run all*).
+3. The first cell installs any missing library **inside the hosted session**, and the notebooks download their own data and sample images. Nothing has to be uploaded, downloaded or typed in while the notebook runs.
 
----
+### Testing your own image
 
-### Running the Lab
-
-1. **Run each cell** in the notebook **sequentially**:
-   - Train the model using extracted features.
-   - Save the trained model.
-   - Use the prediction function to test the model on new images.
-
-2. **To test a custom image**:
-   - Make sure the image is **512x512 grayscale (.pgm format)**.
-   - Use the `run_prediction(scaler, pca, clf)` function and **provide the image URL** when prompted.
+In `AI_steg_predict.ipynb`, Part B, Step 4: set `MY_IMAGE` to the URL (or path) of a **512x512 grayscale `.pgm`** image and run the cell. JPEG images are a poor fit because compression destroys the least-significant-bit patterns the model uses.
 
 ---
 
 ### Expected Outputs
 
-#### Training Logs
+These numbers are what the notebook produces (the random seed is fixed, so you should see the same values):
 
 ```text
-Training Accuracy: 0.9876
+Combined Dataset Shape: (20000, 42)
+Dataset shape after removing NaNs: (19358, 41)   (removed 642 rows)
+Training rows: 13550   Test rows: 5808
+Total variance kept by PCA: 96.6%
 
-Classification Report:
-              precision    recall  f1-score   support
-       Cover       0.99      0.98      0.98      1500
-       Stego       0.98      0.99      0.98      1500
-    accuracy                           0.98      3000
+TRAINING accuracy: 0.7825
+TEST accuracy:     0.6985      <- the number that matters (images the model has never seen)
 ```
 
-#### Prediction Result
+On the held-out test set the model is right about 7 times in 10: much better than guessing (50 %), but far from perfect. LSB *matching* is designed to be hard to detect, so this is a realistic result. A stego verdict from this model is a lead, not proof.
+
+#### Prediction example (sample pair no. 1)
 
 ```text
-Prediction Result: Steg Image (LSB Matching Detected)
+Cover image  -> Cover Image (No LSB Matching)               (probability of stego = 0.02)
+Stego image  -> Steg Image (LSB Matching Detected)          (probability of stego = 0.81)
 ```
-
-#### Custom Image Output
-
-- The system will print the predicted label based on the trained model:
-  - `Steg Image (LSB Matching Detected)`  
-  - `Cover Image (No LSB Matching)`
 
 ---
 
 ### Conclusion
 
-This lab demonstrates how to build a steganography detection system using machine learning. By analyzing subtle statistical patterns from image features, the AI model can accurately detect whether a message is hidden inside an image. This is a powerful tool for digital forensics, helping investigators uncover hidden evidence within seemingly harmless images.
-
-Feel free to experiment with other `.pgm` images and observe the model's predictions!
-```
+This lab demonstrates how to build a steganography detection system using machine learning, and, just as importantly, how to measure it honestly: accuracy on unseen data, a confusion matrix, and a clear statement of limitations. Feel free to experiment with other `.pgm` images from the BOSSbase sample collection (numbers 1 to 25).
