@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="slides/SectraTEK_Practical1_Steganalysis.pdf"><img src="slides/img/cover.png" alt="Practical 1: Steganalysis - lecture deck cover" width="880"></a>
+</p>
+
 # Understanding Steganography: A Detailed Overview
 
 **Slides:** [lecture deck (PDF)](slides/SectraTEK_Practical1_Steganalysis.pdf) : [PowerPoint](slides/SectraTEK_Practical1_Steganalysis.pptx)
@@ -46,6 +50,11 @@
 ---
 
 ## Explanation of Steganography
+
+<p align="center">
+  <img src="slides/img/two_images.png" alt="A cover image and a stego image that look identical" width="840"><br>
+  <sub><em>These two images are not the same: the one on the right hides the word "Secret", yet only 28 of 262,144 pixels changed - none of it visible to the eye.</em></sub>
+</p>
 
 ### What is Steganography?
 
@@ -228,6 +237,11 @@ In the following sections, we will explore how to practically apply these concep
 
 
 ## How to Hide a Message within an Image
+
+<p align="center">
+  <img src="slides/img/lsb_five_moves.png" alt="Hiding the word Secret in five moves (LSB steganography)" width="840"><br>
+  <sub><em>LSB steganography in five moves: spell the message, turn it to bits, flip the last bit of each pixel, and read it back - the picture stays intact.</em></sub>
+</p>
 
 ### Introduction to Hiding a Message
 Steganography involves embedding secret messages into seemingly innocuous digital media such as images. A common technique to achieve this is **Least Significant Bit (LSB) replacement**, where the least important bit in each pixel value is altered slightly to encode the hidden data. This method maintains the image's visual integrity, making changes almost invisible to the human eye.
@@ -617,6 +631,11 @@ In practical applications, these 41 features are used to train models such as **
 ---
 
 ## Summary for Students
+
+<p align="center">
+  <img src="slides/img/pipeline.png" alt="The whole steganalysis pipeline, mapped to the notebook" width="840"><br>
+  <sub><em>The whole pipeline, mapped to the lab notebook: load, clean, split, scale + PCA, train, test, predict - each step is one cell you run.</em></sub>
+</p>
 
 - Advanced steganalysis often involves extracting a large number of detailed statistical features from images.
 - This **41-feature method** is one such powerful technique, combining bit-plane analysis, histogram analysis, and wavelet transformations.
