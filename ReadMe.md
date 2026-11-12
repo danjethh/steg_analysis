@@ -1,5 +1,7 @@
 # Understanding Steganography: A Detailed Overview
 
+**Slides:** [lecture deck (PDF)](slides/SectraTEK_Practical1_Steganalysis.pdf) : [PowerPoint](slides/SectraTEK_Practical1_Steganalysis.pptx)
+
 ## Table of Contents
 1. [Explanation of Steganography](#explanation-of-steganography)
    - [What is Steganography?](#what-is-steganography)
